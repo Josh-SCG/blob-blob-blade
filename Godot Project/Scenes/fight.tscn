@@ -1,0 +1,218 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbfwxyg0pqfg6"]
+
+[ext_resource type="Texture2D" uid="uid://vr46yilgcau" path="res://Assets/Art/Road.png" id="1_ejuao"]
+[ext_resource type="Texture2D" uid="uid://cigiw5kjgttho" path="res://Assets/Art/Environment.png" id="1_xhps3"]
+[ext_resource type="Texture2D" uid="uid://bdpht5cynb0y6" path="res://Assets/Art/Misc.png" id="3_xugvy"]
+[ext_resource type="PackedScene" uid="uid://4778tvltpbg1" path="res://Scenes/player.tscn" id="4_u1cp6"]
+
+[node name="Fight" type="Node2D"]
+
+[node name="Environment" type="Node2D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="Road-T" type="TextureRect" parent="Environment"]
+offset_left = 24.0
+offset_top = 68.0
+offset_right = 216.0
+offset_bottom = 84.0
+texture = ExtResource("1_ejuao")
+stretch_mode = 1
+
+[node name="Road-B" type="TextureRect" parent="Environment"]
+offset_left = 24.0
+offset_top = 216.0
+offset_right = 216.0
+offset_bottom = 232.0
+texture = ExtResource("1_ejuao")
+stretch_mode = 1
+flip_h = true
+
+[node name="Road-L" type="TextureRect" parent="Environment"]
+offset_left = 24.0
+offset_top = 80.0
+offset_right = 166.0
+offset_bottom = 96.0
+rotation = 1.5708
+texture = ExtResource("1_ejuao")
+stretch_mode = 1
+flip_h = true
+
+[node name="Road-R" type="TextureRect" parent="Environment"]
+offset_left = 232.0
+offset_top = 80.0
+offset_right = 374.0
+offset_bottom = 96.0
+rotation = 1.5708
+texture = ExtResource("1_ejuao")
+stretch_mode = 1
+
+[node name="Circle-TL" type="Sprite2D" parent="Environment"]
+position = Vector2(16, 76)
+texture = ExtResource("1_xhps3")
+hframes = 4
+vframes = 3
+frame = 3
+
+[node name="Circle-TR" type="Sprite2D" parent="Environment"]
+position = Vector2(224, 76)
+texture = ExtResource("1_xhps3")
+hframes = 4
+vframes = 3
+frame = 3
+
+[node name="Circle-BL" type="Sprite2D" parent="Environment"]
+position = Vector2(16, 224)
+texture = ExtResource("1_xhps3")
+hframes = 4
+vframes = 3
+frame = 3
+
+[node name="Circle-BR" type="Sprite2D" parent="Environment"]
+position = Vector2(224, 224)
+texture = ExtResource("1_xhps3")
+hframes = 4
+vframes = 3
+frame = 3
+
+[node name="EnemyHealth" type="Node2D" parent="."]
+position = Vector2(116, 28)
+
+[node name="ColorRect" type="ColorRect" parent="EnemyHealth"]
+offset_left = 15.0
+offset_top = -6.0
+offset_right = 115.0
+offset_bottom = 6.0
+color = Color(1, 0.682353, 0.788235, 1)
+
+[node name="Orb" type="Sprite2D" parent="EnemyHealth"]
+texture = ExtResource("3_xugvy")
+hframes = 6
+vframes = 2
+frame = 9
+
+[node name="Bar1" type="Sprite2D" parent="EnemyHealth"]
+position = Vector2(22, 0)
+texture = ExtResource("3_xugvy")
+hframes = 12
+vframes = 4
+frame = 44
+
+[node name="Bar2" type="Sprite2D" parent="EnemyHealth"]
+position = Vector2(67.5, 0)
+scale = Vector2(4.8125, 1)
+texture = ExtResource("3_xugvy")
+hframes = 12
+vframes = 4
+frame = 41
+
+[node name="Bar3" type="Sprite2D" parent="EnemyHealth"]
+position = Vector2(110, 0)
+texture = ExtResource("3_xugvy")
+hframes = 12
+vframes = 4
+frame = 32
+
+[node name="Border" type="Node2D" parent="."]
+position = Vector2(120, 32)
+metadata/_edit_group_ = true
+
+[node name="UI-Border-TM" type="Sprite2D" parent="Border"]
+position = Vector2(2, -27)
+scale = Vector2(18.9375, 1)
+texture = ExtResource("3_xugvy")
+hframes = 12
+vframes = 4
+frame = 7
+
+[node name="UI-Border-L" type="Sprite2D" parent="Border"]
+position = Vector2(-113, -10.3315)
+rotation = 1.5708
+scale = Vector2(3.15185, 1)
+texture = ExtResource("3_xugvy")
+hframes = 12
+vframes = 4
+frame = 19
+
+[node name="UI-Border-R" type="Sprite2D" parent="Border"]
+position = Vector2(113, -12)
+rotation = 1.5708
+scale = Vector2(3.06796, 1)
+texture = ExtResource("3_xugvy")
+hframes = 12
+vframes = 4
+frame = 7
+
+[node name="UI-Border-BL" type="Sprite2D" parent="Border"]
+position = Vector2(-112, 20)
+texture = ExtResource("3_xugvy")
+hframes = 12
+vframes = 4
+frame = 18
+
+[node name="UI-Border-BR" type="Sprite2D" parent="Border"]
+position = Vector2(112, 20)
+texture = ExtResource("3_xugvy")
+hframes = 12
+vframes = 4
+frame = 20
+
+[node name="UI-Border-BM" type="Sprite2D" parent="Border"]
+position = Vector2(2.00001, 20)
+scale = Vector2(13.25, 1)
+texture = ExtResource("3_xugvy")
+hframes = 12
+vframes = 4
+frame = 19
+
+[node name="PlayerHealth" type="Node2D" parent="."]
+position = Vector2(16, 32)
+
+[node name="Heart1" type="Sprite2D" parent="PlayerHealth"]
+texture = ExtResource("3_xugvy")
+hframes = 12
+vframes = 4
+frame = 16
+
+[node name="Heart2" type="Sprite2D" parent="PlayerHealth"]
+position = Vector2(16, 0)
+texture = ExtResource("3_xugvy")
+hframes = 12
+vframes = 4
+frame = 16
+
+[node name="Heart3" type="Sprite2D" parent="PlayerHealth"]
+position = Vector2(32, 0)
+texture = ExtResource("3_xugvy")
+hframes = 12
+vframes = 4
+frame = 16
+
+[node name="Heart4" type="Sprite2D" parent="PlayerHealth"]
+position = Vector2(48, 0)
+texture = ExtResource("3_xugvy")
+hframes = 12
+vframes = 4
+frame = 16
+
+[node name="Heart5" type="Sprite2D" parent="PlayerHealth"]
+position = Vector2(64, 0)
+texture = ExtResource("3_xugvy")
+hframes = 12
+vframes = 4
+frame = 16
+
+[node name="Player" parent="." node_paths=PackedStringArray("points") instance=ExtResource("4_u1cp6")]
+position = Vector2(16, 224)
+points = [NodePath("../Marker-TL"), NodePath("../Marker-TR"), NodePath("../Marker-BL"), NodePath("../Marker-BR")]
+
+[node name="Marker-TL" type="Marker2D" parent="."]
+position = Vector2(16, 76)
+
+[node name="Marker-TR" type="Marker2D" parent="."]
+position = Vector2(224, 76)
+
+[node name="Marker-BL" type="Marker2D" parent="."]
+position = Vector2(16, 224)
+
+[node name="Marker-BR" type="Marker2D" parent="."]
+position = Vector2(224, 224)

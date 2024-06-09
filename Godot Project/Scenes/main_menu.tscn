@@ -1,0 +1,146 @@
+[gd_scene load_steps=21 format=3 uid="uid://b8ey1tlpi6jpq"]
+
+[ext_resource type="Texture2D" uid="uid://bfmyuhppk102w" path="res://Assets/Art/Titles.png" id="1_ng8d5"]
+[ext_resource type="Texture2D" uid="uid://cigiw5kjgttho" path="res://Assets/Art/Environment.png" id="1_u4e8e"]
+[ext_resource type="Texture2D" uid="uid://dww6c367uddmo" path="res://Assets/Art/UI Buttons/play_normal.png" id="2_vv7fy"]
+[ext_resource type="Texture2D" uid="uid://0v1bnl5rcnlb" path="res://Assets/Art/UI Buttons/play_pressed.png" id="3_jk40b"]
+[ext_resource type="Texture2D" uid="uid://naujco7ho1nv" path="res://Assets/Art/UI Buttons/play_hover.png" id="4_hanqu"]
+[ext_resource type="FontFile" uid="uid://bgjbj7oq2nv44" path="res://Assets/SCG_FONT.ttf" id="5_tf87q"]
+[ext_resource type="Texture2D" uid="uid://bm30e6ek2g8iy" path="res://Assets/Art/UI Buttons/achieve_normal.png" id="6_0ak2s"]
+[ext_resource type="Texture2D" uid="uid://cjpio0gp5qta0" path="res://Assets/Art/UI Buttons/achieve_pressed.png" id="7_4k6bm"]
+[ext_resource type="Texture2D" uid="uid://b37ydv2scok0k" path="res://Assets/Art/UI Buttons/achieve_hover.png" id="8_ekh0l"]
+[ext_resource type="Texture2D" uid="uid://cs85o6piphntf" path="res://Assets/Art/UI Buttons/howTo_normal.png" id="9_gsei0"]
+[ext_resource type="Texture2D" uid="uid://d1ju4dxp1bmdw" path="res://Assets/Art/UI Buttons/howTo_pressed.png" id="10_d0lak"]
+[ext_resource type="Texture2D" uid="uid://dv84x8yohj2x" path="res://Assets/Art/UI Buttons/howTo_hover.png" id="11_3irhc"]
+[ext_resource type="Texture2D" uid="uid://dg0o4urnoqh86" path="res://Assets/Art/UI Buttons/settings_normal.png" id="12_25hx5"]
+[ext_resource type="Texture2D" uid="uid://dcy8upw687ajy" path="res://Assets/Art/UI Buttons/settings_pressed.png" id="13_l8mby"]
+[ext_resource type="Texture2D" uid="uid://ct7wk73rymdg4" path="res://Assets/Art/UI Buttons/settings_hover.png" id="14_v05p7"]
+[ext_resource type="Texture2D" uid="uid://c522rv3s7o46j" path="res://Assets/Art/UI Buttons/credits_normal.png" id="15_6kkew"]
+[ext_resource type="Texture2D" uid="uid://dxdea6anev0wx" path="res://Assets/Art/UI Buttons/credits_pressed.png" id="16_b73mv"]
+[ext_resource type="Texture2D" uid="uid://ckawhrj3jj75c" path="res://Assets/Art/UI Buttons/credits_hover.png" id="17_dmav6"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1t2s7"]
+texture = ExtResource("1_u4e8e")
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_hw15t"]
+sources/0 = SubResource("TileSetAtlasSource_1t2s7")
+
+[node name="MainMenu" type="Node2D"]
+scale = Vector2(0.75, 0.75)
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_hw15t")
+format = 2
+layer_0/tile_data = PackedInt32Array(-1, 196608, 1, 65535, 196608, 1, 131071, 65536, 1, 196607, 196608, 1, 262143, 196608, 1, 327679, 131072, 1, 393215, 196608, 1, 458751, 65536, 1, 524287, 65536, 1, 589823, 65536, 1, 655359, 131072, 1, 720895, 131072, 1, 786431, 196608, 1, 851967, 196608, 1, 917503, 131072, 1, 983039, 196608, 1, 1048575, 131072, 1, 1114111, 131072, 1, 1179647, 131072, 1, 1245183, 131072, 1, 1310719, 65536, 1, 1376255, 196608, 1, -65536, 65536, 1, 0, 65536, 1, 65536, 65536, 1, 131072, 196608, 1, 196608, 131072, 1, 262144, 196608, 1, 327680, 65536, 1, 393216, 65536, 1, 458752, 65536, 1, 524288, 65536, 1, 589824, 196608, 1, 655360, 131072, 1, 720896, 131072, 1, 786432, 131072, 1, 851968, 131072, 1, 917504, 196608, 1, 983040, 196608, 1, 1048576, 196608, 1, 1114112, 196608, 1, 1179648, 65536, 1, 1245184, 131072, 1, 1310720, 65536, 1, -65535, 131072, 1, 1, 131072, 1, 65537, 196608, 1, 131073, 131072, 1, 196609, 196608, 1, 262145, 131072, 1, 327681, 131072, 1, 393217, 65536, 1, 458753, 65536, 1, 524289, 196608, 1, 589825, 65536, 1, 655361, 131072, 1, 720897, 131072, 1, 786433, 65536, 1, 851969, 131072, 1, 917505, 196608, 1, 983041, 131072, 1, 1048577, 131072, 1, 1114113, 65536, 1, 1179649, 196608, 1, 1245185, 131072, 1, 1310721, 196608, 1, -65534, 131072, 1, 2, 131072, 1, 65538, 131072, 1, 131074, 65536, 1, 196610, 131072, 1, 262146, 196608, 1, 327682, 196608, 1, 393218, 65536, 1, 458754, 131072, 1, 524290, 196608, 1, 589826, 65536, 1, 655362, 196608, 1, 720898, 65536, 1, 786434, 65536, 1, 851970, 131072, 1, 917506, 131072, 1, 983042, 131072, 1, 1048578, 196608, 1, 1114114, 196608, 1, 1179650, 196608, 1, 1245186, 196608, 1, 1310722, 65536, 1, -65533, 196608, 1, 3, 131072, 1, 65539, 65536, 1, 131075, 65536, 1, 196611, 65536, 1, 262147, 65536, 1, 327683, 196608, 1, 393219, 196608, 1, 458755, 196608, 1, 524291, 196608, 1, 589827, 131072, 1, 655363, 65536, 1, 720899, 196608, 1, 786435, 196608, 1, 851971, 196608, 1, 917507, 131072, 1, 983043, 196608, 1, 1048579, 196608, 1, 1114115, 131072, 1, 1179651, 131072, 1, 1245187, 131072, 1, 1310723, 196608, 1, -65532, 196608, 1, 4, 65536, 1, 65540, 131072, 1, 131076, 65536, 1, 196612, 65536, 1, 262148, 65536, 1, 327684, 65536, 1, 393220, 65536, 1, 458756, 65536, 1, 524292, 131072, 1, 589828, 65536, 1, 655364, 131072, 1, 720900, 131072, 1, 786436, 131072, 1, 851972, 196608, 1, 917508, 131072, 1, 983044, 65536, 1, 1048580, 131072, 1, 1114116, 196608, 1, 1179652, 131072, 1, 1245188, 196608, 1, 1310724, 131072, 1, -65531, 65536, 1, 5, 196608, 1, 65541, 65536, 1, 131077, 131072, 1, 196613, 65536, 1, 262149, 65536, 1, 327685, 196608, 1, 393221, 131072, 1, 458757, 196608, 1, 524293, 65536, 1, 589829, 196608, 1, 655365, 196608, 1, 720901, 196608, 1, 786437, 196608, 1, 851973, 65536, 1, 917509, 131072, 1, 983045, 196608, 1, 1048581, 196608, 1, 1114117, 65536, 1, 1179653, 196608, 1, 1245189, 131072, 1, 1310725, 131072, 1, -65530, 65536, 1, 6, 65536, 1, 65542, 131072, 1, 131078, 196608, 1, 196614, 196608, 1, 262150, 65536, 1, 327686, 131072, 1, 393222, 196608, 1, 458758, 196608, 1, 524294, 131072, 1, 589830, 131072, 1, 655366, 65536, 1, 720902, 131072, 1, 786438, 131072, 1, 851974, 196608, 1, 917510, 131072, 1, 983046, 196608, 1, 1048582, 196608, 1, 1114118, 65536, 1, 1179654, 196608, 1, 1245190, 131072, 1, 1310726, 131072, 1, -65529, 131072, 1, 7, 196608, 1, 65543, 196608, 1, 131079, 131072, 1, 196615, 196608, 1, 262151, 196608, 1, 327687, 65536, 1, 393223, 65536, 1, 458759, 196608, 1, 524295, 65536, 1, 589831, 65536, 1, 655367, 131072, 1, 720903, 131072, 1, 786439, 196608, 1, 851975, 196608, 1, 917511, 196608, 1, 983047, 131072, 1, 1048583, 65536, 1, 1114119, 196608, 1, 1179655, 131072, 1, 1245191, 65536, 1, 1310727, 65536, 1, -65528, 65536, 1, 8, 196608, 1, 65544, 131072, 1, 131080, 131072, 1, 196616, 196608, 1, 262152, 65536, 1, 327688, 65536, 1, 393224, 65536, 1, 458760, 196608, 1, 524296, 131072, 1, 589832, 196608, 1, 655368, 65536, 1, 720904, 65536, 1, 786440, 196608, 1, 851976, 131072, 1, 917512, 196608, 1, 983048, 131072, 1, 1048584, 65536, 1, 1114120, 131072, 1, 1179656, 131072, 1, 1245192, 196608, 1, 1310728, 196608, 1, -65527, 65536, 1, 9, 131072, 1, 65545, 65536, 1, 131081, 196608, 1, 196617, 131072, 1, 262153, 196608, 1, 327689, 131072, 1, 393225, 65536, 1, 458761, 131072, 1, 524297, 196608, 1, 589833, 196608, 1, 655369, 196608, 1, 720905, 196608, 1, 786441, 196608, 1, 851977, 131072, 1, 917513, 65536, 1, 983049, 131072, 1, 1048585, 65536, 1, 1114121, 65536, 1, 1179657, 131072, 1, 1245193, 196608, 1, 1310729, 65536, 1, -65526, 65536, 1, 10, 65536, 1, 65546, 196608, 1, 131082, 196608, 1, 196618, 196608, 1, 262154, 65536, 1, 327690, 196608, 1, 393226, 65536, 1, 458762, 196608, 1, 524298, 196608, 1, 589834, 196608, 1, 655370, 65536, 1, 720906, 196608, 1, 786442, 131072, 1, 851978, 196608, 1, 917514, 196608, 1, 983050, 196608, 1, 1048586, 65536, 1, 1114122, 131072, 1, 1179658, 196608, 1, 1245194, 196608, 1, 1310730, 65536, 1, -65525, 196608, 1, 11, 196608, 1, 65547, 131072, 1, 131083, 196608, 1, 196619, 131072, 1, 262155, 131072, 1, 327691, 65536, 1, 393227, 65536, 1, 458763, 131072, 1, 524299, 65536, 1, 589835, 65536, 1, 655371, 65536, 1, 720907, 131072, 1, 786443, 65536, 1, 851979, 65536, 1, 917515, 131072, 1, 983051, 131072, 1, 1048587, 65536, 1, 1114123, 196608, 1, 1179659, 131072, 1, 1245195, 65536, 1, 1310731, 65536, 1, -65524, 131072, 1, 12, 196608, 1, 65548, 196608, 1, 131084, 196608, 1, 196620, 65536, 1, 262156, 131072, 1, 327692, 65536, 1, 393228, 65536, 1, 458764, 196608, 1, 524300, 65536, 1, 589836, 131072, 1, 655372, 65536, 1, 720908, 65536, 1, 786444, 65536, 1, 851980, 65536, 1, 917516, 65536, 1, 983052, 65536, 1, 1048588, 131072, 1, 1114124, 131072, 1, 1179660, 65536, 1, 1245196, 196608, 1, 1310732, 65536, 1, -65523, 196608, 1, 13, 131072, 1, 65549, 65536, 1, 131085, 131072, 1, 196621, 131072, 1, 262157, 196608, 1, 327693, 131072, 1, 393229, 131072, 1, 458765, 131072, 1, 524301, 65536, 1, 589837, 131072, 1, 655373, 196608, 1, 720909, 65536, 1, 786445, 65536, 1, 851981, 196608, 1, 917517, 196608, 1, 983053, 196608, 1, 1048589, 65536, 1, 1114125, 131072, 1, 1179661, 196608, 1, 1245197, 196608, 1, 1310733, 131072, 1, -65522, 131072, 1, 14, 196608, 1, 65550, 65536, 1, 131086, 131072, 1, 196622, 196608, 1, 262158, 131072, 1, 327694, 65536, 1, 393230, 196608, 1, 458766, 65536, 1, 524302, 131072, 1, 589838, 196608, 1, 655374, 65536, 1, 720910, 196608, 1, 786446, 196608, 1, 851982, 65536, 1, 917518, 196608, 1, 983054, 131072, 1, 1048590, 131072, 1, 1114126, 196608, 1, 1179662, 196608, 1, 1245198, 65536, 1, 1310734, 131072, 1, -65521, 196608, 1, 15, 196608, 1, 65551, 65536, 1, 131087, 131072, 1, 196623, 196608, 1, 262159, 131072, 1, 327695, 196608, 1, 393231, 65536, 1, 458767, 131072, 1, 524303, 131072, 1, 589839, 131072, 1, 655375, 65536, 1, 720911, 65536, 1, 786447, 196608, 1, 851983, 131072, 1, 917519, 131072, 1, 983055, 131072, 1, 1048591, 131072, 1, 1114127, 65536, 1, 1179663, 65536, 1, 1245199, 131072, 1, 1310735, 196608, 1, -65520, 131072, 1, 16, 131072, 1, 65552, 131072, 1, 131088, 131072, 1, 196624, 65536, 1, 262160, 196608, 1, 327696, 131072, 1, 393232, 65536, 1, 458768, 196608, 1, 524304, 131072, 1, 589840, 65536, 1, 655376, 65536, 1, 720912, 131072, 1, 786448, 65536, 1, 851984, 196608, 1, 917520, 196608, 1, 983056, 65536, 1, 1048592, 196608, 1, 1114128, 131072, 1, 1179664, 131072, 1, 1245200, 131072, 1, 1310736, 196608, 1, -65519, 131072, 1, 17, 65536, 1, 65553, 196608, 1, 131089, 131072, 1, 196625, 65536, 1, 262161, 65536, 1, 327697, 65536, 1, 393233, 131072, 1, 458769, 196608, 1, 524305, 131072, 1, 589841, 131072, 1, 655377, 196608, 1, 720913, 196608, 1, 786449, 65536, 1, 851985, 131072, 1, 917521, 65536, 1, 983057, 131072, 1, 1048593, 65536, 1, 1114129, 131072, 1, 1179665, 131072, 1, 1245201, 196608, 1, 1310737, 196608, 1, -65518, 196608, 1, 18, 65536, 1, 65554, 65536, 1, 131090, 196608, 1, 196626, 65536, 1, 262162, 196608, 1, 327698, 196608, 1, 393234, 131072, 1, 458770, 131072, 1, 524306, 65536, 1, 589842, 65536, 1, 655378, 131072, 1, 720914, 131072, 1, 786450, 65536, 1, 851986, 65536, 1, 917522, 131072, 1, 983058, 131072, 1, 1048594, 196608, 1, 1114130, 196608, 1, 1179666, 196608, 1, 1245202, 196608, 1, 1310738, 131072, 1, -65517, 65536, 1, 19, 131072, 1, 65555, 131072, 1, 131091, 131072, 1, 196627, 196608, 1, 262163, 196608, 1, 327699, 196608, 1, 393235, 196608, 1, 458771, 65536, 1, 524307, 196608, 1, 589843, 65536, 1, 655379, 65536, 1, 720915, 65536, 1, 786451, 196608, 1, 851987, 196608, 1, 917523, 131072, 1, 983059, 65536, 1, 1048595, 65536, 1, 1114131, 65536, 1, 1179667, 65536, 1, 1245203, 131072, 1, 1310739, 131072, 1, -65516, 131072, 1, 20, 131072, 1, 65556, 196608, 1, 131092, 65536, 1, 196628, 196608, 1, 262164, 65536, 1, 327700, 131072, 1, 393236, 131072, 1, 458772, 65536, 1, 524308, 131072, 1, 589844, 131072, 1, 655380, 65536, 1, 720916, 65536, 1, 786452, 131072, 1, 851988, 65536, 1, 917524, 131072, 1, 983060, 65536, 1, 1048596, 65536, 1, 1114132, 131072, 1, 1179668, 65536, 1, 1245204, 196608, 1, 1310740, 196608, 1)
+
+[node name="ColorRect" type="ColorRect" parent="TileMap"]
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 339.0
+offset_bottom = 340.0
+color = Color(0, 0, 0, 0.843137)
+
+[node name="Title" type="Sprite2D" parent="."]
+position = Vector2(165, 27)
+scale = Vector2(2, 2)
+texture = ExtResource("1_ng8d5")
+vframes = 4
+
+[node name="Sub-title" type="Sprite2D" parent="Title"]
+position = Vector2(7, 18)
+texture = ExtResource("1_ng8d5")
+hframes = 2
+vframes = 4
+frame = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 16.0
+offset_top = 80.0
+offset_right = 32.0
+offset_bottom = 176.0
+scale = Vector2(2, 2)
+metadata/_edit_group_ = true
+
+[node name="btn_Play" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_vv7fy")
+texture_pressed = ExtResource("3_jk40b")
+texture_hover = ExtResource("4_hanqu")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/btn_Play"]
+layout_mode = 0
+offset_left = 20.0
+offset_right = 400.0
+offset_bottom = 80.0
+scale = Vector2(0.25, 0.25)
+theme_override_colors/default_color = Color(1, 0.682353, 0.788235, 1)
+theme_override_fonts/normal_font = ExtResource("5_tf87q")
+theme_override_font_sizes/normal_font_size = 48
+text = "Play"
+
+[node name="btn_Achieve" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("6_0ak2s")
+texture_pressed = ExtResource("7_4k6bm")
+texture_hover = ExtResource("8_ekh0l")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/btn_Achieve"]
+offset_left = 20.0
+offset_right = 400.0
+offset_bottom = 80.0
+scale = Vector2(0.25, 0.25)
+theme_override_colors/default_color = Color(1, 0.682353, 0.788235, 1)
+theme_override_fonts/normal_font = ExtResource("5_tf87q")
+theme_override_font_sizes/normal_font_size = 48
+text = "Achievements"
+
+[node name="btn_HowTo" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("9_gsei0")
+texture_pressed = ExtResource("10_d0lak")
+texture_hover = ExtResource("11_3irhc")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/btn_HowTo"]
+offset_left = 20.0
+offset_right = 400.0
+offset_bottom = 80.0
+scale = Vector2(0.25, 0.25)
+theme_override_colors/default_color = Color(1, 0.682353, 0.788235, 1)
+theme_override_fonts/normal_font = ExtResource("5_tf87q")
+theme_override_font_sizes/normal_font_size = 48
+text = "How To"
+
+[node name="btn_Settings" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("12_25hx5")
+texture_pressed = ExtResource("13_l8mby")
+texture_hover = ExtResource("14_v05p7")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/btn_Settings"]
+offset_left = 20.0
+offset_right = 400.0
+offset_bottom = 80.0
+scale = Vector2(0.25, 0.25)
+theme_override_colors/default_color = Color(1, 0.682353, 0.788235, 1)
+theme_override_fonts/normal_font = ExtResource("5_tf87q")
+theme_override_font_sizes/normal_font_size = 48
+text = "Settings"
+
+[node name="btn_Credits" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("15_6kkew")
+texture_pressed = ExtResource("16_b73mv")
+texture_hover = ExtResource("17_dmav6")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/btn_Credits"]
+offset_left = 20.0
+offset_right = 400.0
+offset_bottom = 80.0
+scale = Vector2(0.25, 0.25)
+theme_override_colors/default_color = Color(1, 0.682353, 0.788235, 1)
+theme_override_fonts/normal_font = ExtResource("5_tf87q")
+theme_override_font_sizes/normal_font_size = 48
+text = "Credits"

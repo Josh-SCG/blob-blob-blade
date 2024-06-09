@@ -1,0 +1,84 @@
+[gd_scene load_steps=7 format=3 uid="uid://4778tvltpbg1"]
+
+[ext_resource type="Texture2D" uid="uid://bfa5bbpxq1kre" path="res://Assets/Art/Blob_Sprites.png" id="1_60wk3"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_ouj1n"]
+
+[sub_resource type="Animation" id="Animation_g4ynl"]
+resource_name = "idle"
+length = 1.00002
+loop_mode = 1
+step = 0.166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5, 0.666667, 0.833333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [32, 33, 34, 35, 36, 37]
+}
+
+[sub_resource type="Animation" id="Animation_eo2ni"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [32]
+}
+
+[sub_resource type="Animation" id="Animation_10iau"]
+resource_name = "run"
+length = 1.00002
+loop_mode = 1
+step = 0.166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5, 0.666667, 0.833333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [40, 41, 42, 43, 44, 45]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_svout"]
+_data = {
+"RESET": SubResource("Animation_eo2ni"),
+"idle": SubResource("Animation_g4ynl"),
+"run": SubResource("Animation_10iau")
+}
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_ouj1n")
+metadata/_edit_group_ = true
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_60wk3")
+hframes = 8
+vframes = 10
+frame = 32
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
+libraries = {
+"": SubResource("AnimationLibrary_svout")
+}
+autoplay = "idle"
+
+[node name="ShieldTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="ShieldTimer" to="." method="_on_shield_timer_timeout"]

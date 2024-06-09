@@ -1,0 +1,53 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1nh6qb3m4jtb"]
+
+[ext_resource type="Script" path="res://Scripts/Ability_Shield.gd" id="1_rdt8m"]
+[ext_resource type="Texture2D" uid="uid://bdg5gjjvreutl" path="res://Assets/Art/Attacks.png" id="2_diovs"]
+
+[node name="Ability_Shield" type="Node2D"]
+script = ExtResource("1_rdt8m")
+
+[node name="RotatePoint" type="Node2D" parent="."]
+
+[node name="Shield" type="Sprite2D" parent="RotatePoint"]
+position = Vector2(0, -16)
+texture = ExtResource("2_diovs")
+hframes = 7
+vframes = 4
+frame = 6
+
+[node name="Shield2" type="Sprite2D" parent="RotatePoint"]
+position = Vector2(0, 16)
+rotation = -3.14159
+texture = ExtResource("2_diovs")
+hframes = 7
+vframes = 4
+frame = 6
+
+[node name="Shield3" type="Sprite2D" parent="RotatePoint"]
+position = Vector2(16, 0)
+rotation = 1.5708
+texture = ExtResource("2_diovs")
+hframes = 7
+vframes = 4
+frame = 6
+
+[node name="Shield4" type="Sprite2D" parent="RotatePoint"]
+position = Vector2(-16, 0)
+rotation = -1.5708
+texture = ExtResource("2_diovs")
+hframes = 7
+vframes = 4
+frame = 6
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+build_mode = 1
+polygon = PackedVector2Array(0, -21, 8, -18, 18, -8, 21, 0, 18, 8, 8, 18, 0, 21, -8, 18, -18, 8, -21, 0, -18, -8, -8, -18, 0, -21, 0, -13, -13, 0, 0, 13, 13, 0, 0, -12)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
