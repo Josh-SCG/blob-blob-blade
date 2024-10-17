@@ -9,6 +9,7 @@ script = ExtResource("1_rdt8m")
 [node name="RotatePoint" type="Node2D" parent="."]
 
 [node name="Shield" type="Sprite2D" parent="RotatePoint"]
+visible = false
 position = Vector2(0, -16)
 texture = ExtResource("2_diovs")
 hframes = 7
@@ -16,6 +17,7 @@ vframes = 4
 frame = 6
 
 [node name="Shield2" type="Sprite2D" parent="RotatePoint"]
+visible = false
 position = Vector2(0, 16)
 rotation = -3.14159
 texture = ExtResource("2_diovs")
@@ -32,6 +34,7 @@ vframes = 4
 frame = 6
 
 [node name="Shield4" type="Sprite2D" parent="RotatePoint"]
+visible = false
 position = Vector2(-16, 0)
 rotation = -1.5708
 texture = ExtResource("2_diovs")
@@ -41,7 +44,6 @@ frame = 6
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
-autostart = true
 
 [node name="Area2D" type="Area2D" parent="."]
 

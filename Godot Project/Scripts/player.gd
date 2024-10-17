@@ -3,6 +3,7 @@ extends Node2D
 @export var points : Array[Marker2D] = []
 
 @export var shield : PackedScene = preload("res://Scenes/ability_shield.tscn")
+@export var sword : PackedScene = preload("res://Scenes/ability_sword.tscn")
 
 @onready var animations = $Sprite/AnimationPlayer
 
@@ -14,8 +15,8 @@ var move_to
 var move_speed = 175
 var is_moving = false
 
-var can_shiled = true
-
+var can_shield = true
+var can_sword = true
 var up_down_locked = false
 var left_right_locked = false
 
@@ -25,12 +26,27 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	#Move+Refactor-- This was just to test it
-	if Input.is_action_just_pressed("ui_accept") and can_shiled:
-		can_shiled = false
-		$ShieldTimer.start()
+	if Input.is_action_just_pressed("shield") and can_shield:
+		can_sword = false
 		var shield_active = shield.instantiate()
 		add_child(shield_active)
+		
+	if Input.is_action_just_released("shield"):
+		can_sword = true
+		
+	if Input.is_action_just_pressed("sword") and can_sword:
+		can_shield = false
+		var sword_active = sword.instantiate()
+		add_child(sword_active)
+		
+	if Input.is_action_just_released("sword"):
+		can_shield = true
+	
+	#if Input.is_action_just_pressed("mouse_right") and can_shield:
+		#can_shield = false
+		#$ShieldTimer.start()
+		#var shield_active = shield.instantiate()
+		#add_child(shield_active)
 	
 	if is_moving:
 		animations.play("run")
@@ -119,5 +135,5 @@ func movement_input():
 	
 
 
-func _on_shield_timer_timeout():
-	can_shiled = true
+#func _on_shield_timer_timeout():
+	#can_shield = true
