@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cbfwxyg0pqfg6"]
+[gd_scene load_steps=9 format=3 uid="uid://cbfwxyg0pqfg6"]
 
 [ext_resource type="Texture2D" uid="uid://vr46yilgcau" path="res://Assets/Art/Road.png" id="1_ejuao"]
 [ext_resource type="Texture2D" uid="uid://cigiw5kjgttho" path="res://Assets/Art/Environment.png" id="1_xhps3"]
@@ -7,62 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://noag44bswqu" path="res://Assets/Art/floor.png" id="4_roucc"]
 [ext_resource type="PackedScene" uid="uid://4778tvltpbg1" path="res://Scenes/player.tscn" id="4_u1cp6"]
 [ext_resource type="PackedScene" uid="uid://bsh54q0wm4rce" path="res://Scenes/enemy.tscn" id="5_78dqg"]
-[ext_resource type="Texture2D" uid="uid://c6xhadplxrdu7" path="res://Assets/Art/Enemy_Sprites.png" id="7_h0uaj"]
 [ext_resource type="Script" path="res://Scripts/player_health.gd" id="8_xtfbv"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hcxbe"]
-atlas = ExtResource("7_h0uaj")
-region = Rect2(0, 16, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ch8rc"]
-atlas = ExtResource("7_h0uaj")
-region = Rect2(16, 16, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_eaypt"]
-atlas = ExtResource("7_h0uaj")
-region = Rect2(32, 16, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_as0dw"]
-atlas = ExtResource("7_h0uaj")
-region = Rect2(48, 16, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sqjpb"]
-atlas = ExtResource("7_h0uaj")
-region = Rect2(64, 16, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4vjm8"]
-atlas = ExtResource("7_h0uaj")
-region = Rect2(80, 16, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_cu7ik"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hcxbe")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ch8rc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_eaypt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_as0dw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sqjpb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4vjm8")
-}],
-"loop": true,
-"name": &"default",
-"speed": 6.0
-}]
 
 [node name="Fight" type="Node2D"]
 metadata/_edit_horizontal_guides_ = [139.0]
-metadata/_edit_group_ = true
 
 [node name="Environment" type="Node2D" parent="."]
 metadata/_edit_group_ = true
@@ -132,7 +80,7 @@ vframes = 3
 frame = 3
 
 [node name="TopBG" type="TextureRect" parent="Environment"]
-z_index = 3
+z_index = -2
 offset_right = 240.0
 offset_bottom = 58.0
 texture = ExtResource("3_m4n3h")
@@ -159,7 +107,6 @@ offset_bottom = 185.0
 color = Color(0, 0, 0, 0.615686)
 
 [node name="Border" type="Node2D" parent="."]
-z_index = 3
 position = Vector2(120, 32)
 metadata/_edit_group_ = true
 
@@ -211,38 +158,44 @@ hframes = 12
 vframes = 4
 frame = 19
 
-[node name="EnemyHealth" type="Node2D" parent="."]
-z_index = 3
-position = Vector2(116, 28)
+[node name="Enemy" parent="." node_paths=PackedStringArray("player", "myself", "health_bar", "portrait") instance=ExtResource("5_78dqg")]
+position = Vector2(120, 150)
+player = NodePath("../Player")
+myself = NodePath(".")
+health_bar = NodePath("EnemyHealth/Bar")
+portrait = NodePath("EnemyHealth/sprite")
 
-[node name="BarBG" type="ColorRect" parent="EnemyHealth"]
+[node name="EnemyHealth" type="Node2D" parent="Enemy"]
+position = Vector2(-4, -122)
+
+[node name="BarBG" type="ColorRect" parent="Enemy/EnemyHealth"]
 offset_left = 15.0
 offset_top = -6.0
 offset_right = 115.0
 offset_bottom = 6.0
 color = Color(0.317647, 0.0196078, 0.380392, 1)
 
-[node name="Bar" type="ColorRect" parent="EnemyHealth"]
+[node name="Bar" type="ColorRect" parent="Enemy/EnemyHealth"]
 offset_left = 15.0
 offset_top = -6.0
 offset_right = 115.0
 offset_bottom = 6.0
 color = Color(1, 0.682353, 0.788235, 1)
 
-[node name="Orb" type="Sprite2D" parent="EnemyHealth"]
+[node name="Orb" type="Sprite2D" parent="Enemy/EnemyHealth"]
 texture = ExtResource("3_xugvy")
 hframes = 6
 vframes = 2
 frame = 9
 
-[node name="Bar1" type="Sprite2D" parent="EnemyHealth"]
+[node name="Bar1" type="Sprite2D" parent="Enemy/EnemyHealth"]
 position = Vector2(22, 0)
 texture = ExtResource("3_xugvy")
 hframes = 12
 vframes = 4
 frame = 44
 
-[node name="Bar2" type="Sprite2D" parent="EnemyHealth"]
+[node name="Bar2" type="Sprite2D" parent="Enemy/EnemyHealth"]
 position = Vector2(67.5, 0)
 scale = Vector2(4.8125, 1)
 texture = ExtResource("3_xugvy")
@@ -250,38 +203,24 @@ hframes = 12
 vframes = 4
 frame = 41
 
-[node name="Bar3" type="Sprite2D" parent="EnemyHealth"]
+[node name="Bar3" type="Sprite2D" parent="Enemy/EnemyHealth"]
 position = Vector2(110, 0)
 texture = ExtResource("3_xugvy")
 hframes = 12
 vframes = 4
 frame = 32
 
-[node name="sprite" type="AnimatedSprite2D" parent="EnemyHealth"]
-scale = Vector2(1.4, 1.4)
-sprite_frames = SubResource("SpriteFrames_cu7ik")
-autoplay = "default"
-frame_progress = 0.719622
-
-[node name="Enemy" parent="." node_paths=PackedStringArray("player", "myself", "health_bar", "points") instance=ExtResource("5_78dqg")]
-position = Vector2(121, 150)
-player = NodePath("../Player")
-myself = NodePath(".")
-health_bar = NodePath("../EnemyHealth/Bar")
-points = [NodePath("../Top"), NodePath("../Bottom-L"), NodePath("../Bottom-R")]
-metadata/_edit_group_ = true
+[node name="sprite" type="AnimatedSprite2D" parent="Enemy/EnemyHealth"]
+scale = Vector2(1.3, 1.3)
 
 [node name="Player" parent="." node_paths=PackedStringArray("points", "healthUI") instance=ExtResource("4_u1cp6")]
-z_index = 1
 position = Vector2(16, 224)
 points = [NodePath("../Marker-TL"), NodePath("../Marker-TR"), NodePath("../Marker-BL"), NodePath("../Marker-BR")]
 healthUI = NodePath("../PlayerHealth")
 
 [node name="PlayerHealth" type="Node2D" parent="."]
-z_index = 3
 position = Vector2(16, 32)
 script = ExtResource("8_xtfbv")
-metadata/_edit_group_ = true
 
 [node name="Heart1" type="Sprite2D" parent="PlayerHealth"]
 texture = ExtResource("3_xugvy")
@@ -328,12 +267,3 @@ position = Vector2(16, 224)
 
 [node name="Marker-BR" type="Marker2D" parent="."]
 position = Vector2(224, 224)
-
-[node name="Bottom-L" type="Marker2D" parent="."]
-position = Vector2(118, 152)
-
-[node name="Bottom-R" type="Marker2D" parent="."]
-position = Vector2(122, 152)
-
-[node name="Top" type="Marker2D" parent="."]
-position = Vector2(120, 148)

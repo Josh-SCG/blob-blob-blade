@@ -1,0 +1,70 @@
+[gd_scene load_steps=9 format=3 uid="uid://gr1ws4vjyduc"]
+
+[ext_resource type="Script" path="res://Scripts/bullet_straight.gd" id="1_l3yeu"]
+[ext_resource type="Texture2D" uid="uid://bdg5gjjvreutl" path="res://Assets/Art/Attacks.png" id="2_52ky2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5drg5"]
+atlas = ExtResource("2_52ky2")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ahxow"]
+atlas = ExtResource("2_52ky2")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t00yt"]
+atlas = ExtResource("2_52ky2")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qca2a"]
+atlas = ExtResource("2_52ky2")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p2ujl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5drg5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ahxow")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t00yt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qca2a")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gxfge"]
+radius = 6.0
+height = 14.0
+
+[node name="Bullet_Straight" type="CharacterBody2D"]
+script = ExtResource("1_l3yeu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_p2ujl")
+autoplay = "default"
+frame_progress = 0.178579
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_gxfge")
+
+[node name="slow_start" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="queue_free" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="slow_start" to="." method="_on_slow_start_timeout"]
+[connection signal="timeout" from="queue_free" to="." method="_on_queue_free_timeout"]

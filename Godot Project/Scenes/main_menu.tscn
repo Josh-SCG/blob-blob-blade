@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b8ey1tlpi6jpq"]
+[gd_scene load_steps=26 format=3 uid="uid://b8ey1tlpi6jpq"]
 
 [ext_resource type="Texture2D" uid="uid://bfmyuhppk102w" path="res://Assets/Art/Titles.png" id="1_ng8d5"]
 [ext_resource type="Texture2D" uid="uid://cigiw5kjgttho" path="res://Assets/Art/Environment.png" id="1_u4e8e"]
@@ -18,6 +18,11 @@
 [ext_resource type="Texture2D" uid="uid://c522rv3s7o46j" path="res://Assets/Art/UI Buttons/credits_normal.png" id="15_6kkew"]
 [ext_resource type="Texture2D" uid="uid://dxdea6anev0wx" path="res://Assets/Art/UI Buttons/credits_pressed.png" id="16_b73mv"]
 [ext_resource type="Texture2D" uid="uid://ckawhrj3jj75c" path="res://Assets/Art/UI Buttons/credits_hover.png" id="17_dmav6"]
+[ext_resource type="Texture2D" uid="uid://bfa5bbpxq1kre" path="res://Assets/Art/Blob_Sprites.png" id="19_ruxbj"]
+[ext_resource type="Texture2D" uid="uid://vr46yilgcau" path="res://Assets/Art/Road.png" id="19_sd2s4"]
+[ext_resource type="Texture2D" uid="uid://cw57qeja5lbci" path="res://Assets/Art/Sprite_Sprites.png" id="20_u881l"]
+[ext_resource type="Texture2D" uid="uid://bdg5gjjvreutl" path="res://Assets/Art/Attacks.png" id="21_oqule"]
+[ext_resource type="Texture2D" uid="uid://0egcbm85cirq" path="res://Assets/Art/Arrows.png" id="22_ot7ye"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1t2s7"]
 texture = ExtResource("1_u4e8e")
@@ -73,12 +78,13 @@ texture_hover = ExtResource("4_hanqu")
 [node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/btn_Play"]
 layout_mode = 0
 offset_left = 20.0
-offset_right = 400.0
-offset_bottom = 80.0
-scale = Vector2(0.25, 0.25)
+offset_top = 2.0
+offset_right = 820.0
+offset_bottom = 162.0
+scale = Vector2(0.1, 0.1)
 theme_override_colors/default_color = Color(1, 0.682353, 0.788235, 1)
 theme_override_fonts/normal_font = ExtResource("5_tf87q")
-theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/normal_font_size = 96
 text = "Play"
 
 [node name="btn_Achieve" type="TextureButton" parent="VBoxContainer"]
@@ -90,12 +96,13 @@ texture_hover = ExtResource("8_ekh0l")
 [node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/btn_Achieve"]
 layout_mode = 0
 offset_left = 20.0
-offset_right = 400.0
-offset_bottom = 80.0
-scale = Vector2(0.25, 0.25)
+offset_top = 2.0
+offset_right = 820.0
+offset_bottom = 162.0
+scale = Vector2(0.1, 0.1)
 theme_override_colors/default_color = Color(1, 0.682353, 0.788235, 1)
 theme_override_fonts/normal_font = ExtResource("5_tf87q")
-theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/normal_font_size = 96
 text = "Achievements"
 
 [node name="btn_HowTo" type="TextureButton" parent="VBoxContainer"]
@@ -107,12 +114,13 @@ texture_hover = ExtResource("11_3irhc")
 [node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/btn_HowTo"]
 layout_mode = 0
 offset_left = 20.0
-offset_right = 400.0
-offset_bottom = 80.0
-scale = Vector2(0.25, 0.25)
+offset_top = 2.0
+offset_right = 820.0
+offset_bottom = 162.0
+scale = Vector2(0.1, 0.1)
 theme_override_colors/default_color = Color(1, 0.682353, 0.788235, 1)
 theme_override_fonts/normal_font = ExtResource("5_tf87q")
-theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/normal_font_size = 96
 text = "How To"
 
 [node name="btn_Settings" type="TextureButton" parent="VBoxContainer"]
@@ -124,12 +132,13 @@ texture_hover = ExtResource("14_v05p7")
 [node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/btn_Settings"]
 layout_mode = 0
 offset_left = 20.0
-offset_right = 400.0
-offset_bottom = 80.0
-scale = Vector2(0.25, 0.25)
+offset_top = 2.0
+offset_right = 820.0
+offset_bottom = 162.0
+scale = Vector2(0.1, 0.1)
 theme_override_colors/default_color = Color(1, 0.682353, 0.788235, 1)
 theme_override_fonts/normal_font = ExtResource("5_tf87q")
-theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/normal_font_size = 96
 text = "Settings"
 
 [node name="btn_Credits" type="TextureButton" parent="VBoxContainer"]
@@ -141,10 +150,88 @@ texture_hover = ExtResource("17_dmav6")
 [node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/btn_Credits"]
 layout_mode = 0
 offset_left = 20.0
-offset_right = 400.0
-offset_bottom = 80.0
-scale = Vector2(0.25, 0.25)
+offset_top = 2.0
+offset_right = 820.0
+offset_bottom = 162.0
+scale = Vector2(0.1, 0.1)
 theme_override_colors/default_color = Color(1, 0.682353, 0.788235, 1)
 theme_override_fonts/normal_font = ExtResource("5_tf87q")
-theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/normal_font_size = 96
 text = "Credits"
+
+[node name="FightScene" type="Node2D" parent="."]
+position = Vector2(224, 228)
+scale = Vector2(1.5, 1.5)
+
+[node name="road" type="TextureRect" parent="FightScene"]
+offset_left = -151.111
+offset_top = 42.6667
+offset_right = 42.8889
+offset_bottom = 58.6667
+texture = ExtResource("19_sd2s4")
+stretch_mode = 1
+
+[node name="road2" type="TextureRect" parent="FightScene"]
+offset_left = 63.0
+offset_top = -161.0
+offset_right = 284.0
+offset_bottom = -145.0
+rotation = 1.5708
+texture = ExtResource("19_sd2s4")
+stretch_mode = 1
+
+[node name="circle" type="Sprite2D" parent="FightScene"]
+position = Vector2(55.1111, 49.7778)
+texture = ExtResource("1_u4e8e")
+hframes = 4
+vframes = 3
+frame = 3
+
+[node name="sprite" type="Sprite2D" parent="FightScene"]
+position = Vector2(-17.7778, -5.33334)
+texture = ExtResource("20_u881l")
+hframes = 6
+frame = 2
+
+[node name="blob" type="Sprite2D" parent="FightScene"]
+position = Vector2(54.2222, 48.8889)
+texture = ExtResource("19_ruxbj")
+flip_h = true
+hframes = 8
+vframes = 10
+frame = 40
+
+[node name="sword" type="Sprite2D" parent="FightScene"]
+position = Vector2(44.4444, 31.7778)
+texture = ExtResource("21_oqule")
+flip_h = true
+hframes = 7
+vframes = 4
+frame = 8
+
+[node name="shield" type="Sprite2D" parent="FightScene"]
+position = Vector2(40.8889, 48.8889)
+rotation = 1.5708
+texture = ExtResource("21_oqule")
+flip_v = true
+hframes = 7
+vframes = 4
+frame = 6
+
+[node name="bullet" type="Sprite2D" parent="FightScene"]
+position = Vector2(25.7778, 2.66666)
+rotation = 0.733038
+texture = ExtResource("22_ot7ye")
+hframes = 2
+
+[node name="bullet3" type="Sprite2D" parent="FightScene"]
+position = Vector2(17.7778, 24)
+rotation = 0.575959
+texture = ExtResource("22_ot7ye")
+hframes = 2
+
+[node name="bullet2" type="Sprite2D" parent="FightScene"]
+position = Vector2(24.8889, 49.7778)
+rotation = 0.0959931
+texture = ExtResource("22_ot7ye")
+hframes = 2

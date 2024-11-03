@@ -1,9 +1,11 @@
-extends Node2D
+class_name Player
+extends CharacterBody2D
 
 @export var points : Array[Marker2D] = []
 
 @export var shield : PackedScene = preload("res://Scenes/ability_shield.tscn")
 @export var sword : PackedScene = preload("res://Scenes/ability_sword.tscn")
+@export var healthUI : Node2D
 
 @onready var animations = $Sprite/AnimationPlayer
 
@@ -20,15 +22,21 @@ var can_sword = true
 var up_down_locked = false
 var left_right_locked = false
 
+var health = 5
+
 func _ready():
 	global_position = points[current_position].global_position
 	move_to = current_position
+	self.add_to_group("Player")
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	
 	if Input.is_action_just_pressed("shield") and can_shield:
 		can_sword = false
 		var shield_active = shield.instantiate()
+		shield_active.setRotation(Vector2(get_local_mouse_position().x, get_local_mouse_position().y).angle())
 		add_child(shield_active)
 		
 	if Input.is_action_just_released("shield"):
@@ -37,6 +45,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("sword") and can_sword:
 		can_shield = false
 		var sword_active = sword.instantiate()
+		sword_active.setRotation(Vector2(get_local_mouse_position().x, get_local_mouse_position().y).angle())
 		add_child(sword_active)
 		
 	if Input.is_action_just_released("sword"):
@@ -65,6 +74,13 @@ func _process(delta):
 			$Sprite.flip_h = false
 		elif current_position == 1 or current_position == 3:
 			$Sprite.flip_h = true
+
+func damaged() ->void:
+	health -= 1
+	healthUI.updateUI(health)
+	
+	if health == 0:
+		pass #change scene to "You Died"
 
 func movement_input():
 	if Input.is_action_pressed("down"):

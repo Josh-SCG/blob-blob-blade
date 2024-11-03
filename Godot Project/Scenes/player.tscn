@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://4778tvltpbg1"]
+[gd_scene load_steps=8 format=3 uid="uid://4778tvltpbg1"]
 
 [ext_resource type="Texture2D" uid="uid://bfa5bbpxq1kre" path="res://Assets/Art/Blob_Sprites.png" id="1_60wk3"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_ouj1n"]
@@ -61,7 +61,10 @@ _data = {
 "run": SubResource("Animation_10iau")
 }
 
-[node name="Player" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_sct1y"]
+radius = 8.0
+
+[node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_ouj1n")
 metadata/_edit_group_ = true
 
@@ -81,4 +84,5 @@ autoplay = "idle"
 wait_time = 2.0
 autostart = true
 
-[connection signal="timeout" from="ShieldTimer" to="." method="_on_shield_timer_timeout"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_sct1y")

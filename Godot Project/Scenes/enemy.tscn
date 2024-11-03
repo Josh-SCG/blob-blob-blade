@@ -1,0 +1,108 @@
+[gd_scene load_steps=15 format=3 uid="uid://bsh54q0wm4rce"]
+
+[ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_af3d8"]
+[ext_resource type="Texture2D" uid="uid://cw57qeja5lbci" path="res://Assets/Art/Sprite_Sprites.png" id="2_fw46m"]
+[ext_resource type="Script" path="res://Scripts/enemy_state_machine.gd" id="3_lnqtl"]
+[ext_resource type="Script" path="res://Scripts/thinking.gd" id="4_exhna"]
+[ext_resource type="Script" path="res://Scripts/attack_single_fire.gd" id="5_11by5"]
+[ext_resource type="Script" path="res://Scripts/attack_burst.gd" id="6_an38p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sg84n"]
+atlas = ExtResource("2_fw46m")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vwgsc"]
+atlas = ExtResource("2_fw46m")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hede1"]
+atlas = ExtResource("2_fw46m")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2pfe"]
+atlas = ExtResource("2_fw46m")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7kjs3"]
+atlas = ExtResource("2_fw46m")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_li68l"]
+atlas = ExtResource("2_fw46m")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f0hra"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sg84n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vwgsc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hede1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f2pfe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7kjs3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_li68l")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gjeye"]
+radius = 22.0
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_af3d8")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+z_index = 1
+scale = Vector2(1.25, 1.25)
+sprite_frames = SubResource("SpriteFrames_f0hra")
+autoplay = "default"
+frame_progress = 0.559559
+
+[node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
+script = ExtResource("3_lnqtl")
+starting_state = NodePath("Thinking")
+
+[node name="Thinking" type="Node" parent="State Machine" node_paths=PackedStringArray("shoot_state", "burst_state")]
+script = ExtResource("4_exhna")
+shoot_state = NodePath("../Attack_Single_Fire")
+burst_state = NodePath("../Attack Burst")
+
+[node name="stall_start" type="Timer" parent="State Machine/Thinking"]
+wait_time = 6.0
+one_shot = true
+autostart = true
+
+[node name="Attack_Single_Fire" type="Node" parent="State Machine" node_paths=PackedStringArray("think_state")]
+script = ExtResource("5_11by5")
+think_state = NodePath("../Thinking")
+
+[node name="wait" type="Timer" parent="State Machine/Attack_Single_Fire"]
+autostart = true
+
+[node name="Attack Burst" type="Node" parent="State Machine" node_paths=PackedStringArray("think_state")]
+script = ExtResource("6_an38p")
+think_state = NodePath("../Thinking")
+
+[node name="wait" type="Timer" parent="State Machine/Attack Burst"]
+wait_time = 3.0
+autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CircleShape2D_gjeye")
+
+[connection signal="timeout" from="State Machine/Thinking/stall_start" to="State Machine/Thinking" method="_on_stall_start_timeout"]
+[connection signal="timeout" from="State Machine/Attack_Single_Fire/wait" to="State Machine/Attack_Single_Fire" method="_on_wait_timeout"]
+[connection signal="timeout" from="State Machine/Attack Burst/wait" to="State Machine/Attack Burst" method="_on_wait_timeout"]
