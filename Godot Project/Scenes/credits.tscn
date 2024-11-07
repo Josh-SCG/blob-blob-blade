@@ -1,0 +1,168 @@
+[gd_scene load_steps=15 format=3 uid="uid://ci3ec15tbo458"]
+
+[ext_resource type="Script" path="res://Scripts/credits.gd" id="1_cogxt"]
+[ext_resource type="Texture2D" uid="uid://nra2p7ynw8dc" path="res://Assets/Art/bricks.png" id="2_id1tf"]
+[ext_resource type="Texture2D" uid="uid://vr46yilgcau" path="res://Assets/Art/Road.png" id="3_glk30"]
+[ext_resource type="FontFile" uid="uid://bgjbj7oq2nv44" path="res://Assets/SCG_FONT.ttf" id="4_0shut"]
+[ext_resource type="Texture2D" uid="uid://cr0iydjbgn7lt" path="res://Assets/Art/UI Buttons/cross_normal.png" id="5_s57m5"]
+[ext_resource type="Texture2D" uid="uid://c3oii5mxhmg0h" path="res://Assets/Art/UI Buttons/cross_pressed.png" id="6_pasam"]
+[ext_resource type="Texture2D" uid="uid://gg0kmkyx12a3" path="res://Assets/Art/UI Buttons/cross_hover.png" id="7_qk3g3"]
+[ext_resource type="Texture2D" uid="uid://n41yb1uronnr" path="res://Assets/Art/tilemap_white_packed.png" id="8_3lxyh"]
+[ext_resource type="Texture2D" uid="uid://cw57qeja5lbci" path="res://Assets/Art/Sprite_Sprites.png" id="9_2i504"]
+[ext_resource type="Texture2D" uid="uid://bdg5gjjvreutl" path="res://Assets/Art/Attacks.png" id="10_6j5jq"]
+[ext_resource type="Texture2D" uid="uid://cigiw5kjgttho" path="res://Assets/Art/Environment.png" id="11_3etjg"]
+[ext_resource type="Texture2D" uid="uid://y8v21fc15kpg" path="res://Assets/Art/UI Buttons/browser_normal.png" id="12_a73ng"]
+[ext_resource type="Texture2D" uid="uid://bewqmhjx41sjo" path="res://Assets/Art/UI Buttons/browser_pressed.png" id="13_go17s"]
+[ext_resource type="Texture2D" uid="uid://y5vjopx58wd6" path="res://Assets/Art/UI Buttons/browser_hover.png" id="14_pv0en"]
+
+[node name="Credits" type="Node2D"]
+script = ExtResource("1_cogxt")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 320.0
+offset_bottom = 320.0
+scale = Vector2(0.75, 0.75)
+mouse_filter = 2
+texture = ExtResource("2_id1tf")
+stretch_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="TextureRect"]
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 320.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.643137)
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect"]
+layout_mode = 0
+offset_top = 48.0
+offset_right = 240.0
+offset_bottom = 64.0
+scale = Vector2(1.333, 1.333)
+mouse_filter = 2
+texture = ExtResource("3_glk30")
+stretch_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="TextureRect"]
+layout_mode = 0
+offset_top = 210.0
+offset_right = 240.0
+offset_bottom = 226.0
+scale = Vector2(1.333, 1.333)
+mouse_filter = 2
+texture = ExtResource("3_glk30")
+stretch_mode = 1
+flip_h = true
+
+[node name="Top_Title" type="RichTextLabel" parent="."]
+offset_left = 82.0
+offset_top = 10.0
+offset_right = 3402.0
+offset_bottom = 470.0
+scale = Vector2(0.05, 0.05)
+mouse_filter = 2
+theme_override_colors/default_color = Color(1, 0.682353, 0.788235, 1)
+theme_override_fonts/normal_font = ExtResource("4_0shut")
+theme_override_font_sizes/normal_font_size = 256
+text = "Credits"
+metadata/_edit_use_anchors_ = true
+
+[node name="menu" type="TextureButton" parent="."]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 24.0
+offset_bottom = 24.0
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("5_s57m5")
+texture_pressed = ExtResource("6_pasam")
+texture_hover = ExtResource("7_qk3g3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(20, 190)
+texture = ExtResource("8_3lxyh")
+hframes = 34
+vframes = 24
+frame = 86
+
+[node name="Sprite2D6" type="Sprite2D" parent="."]
+position = Vector2(20, 226)
+texture = ExtResource("8_3lxyh")
+hframes = 34
+vframes = 24
+frame = 167
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(20, 208)
+texture = ExtResource("8_3lxyh")
+hframes = 34
+vframes = 24
+frame = 77
+
+[node name="kenny_text" type="RichTextLabel" parent="."]
+offset_left = 45.0
+offset_top = 191.0
+offset_right = 3285.0
+offset_bottom = 1091.0
+scale = Vector2(0.05, 0.05)
+theme_override_colors/default_color = Color(1, 0.682353, 0.788235, 1)
+theme_override_fonts/normal_font = ExtResource("4_0shut")
+theme_override_font_sizes/normal_font_size = 256
+text = "Kenny's 1-Bit Input Prompts Pixel 16×16"
+
+[node name="me_text" type="RichTextLabel" parent="."]
+offset_left = 45.0
+offset_top = 72.0
+offset_right = 3485.0
+offset_bottom = 1132.0
+scale = Vector2(0.05, 0.05)
+theme_override_colors/default_color = Color(1, 0.682353, 0.788235, 1)
+theme_override_fonts/normal_font = ExtResource("4_0shut")
+theme_override_font_sizes/normal_font_size = 256
+text = "Josh-SCG:
+art, music, programming, and writing"
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(169, 137)
+texture = ExtResource("9_2i504")
+hframes = 6
+vframes = 2
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(41, 125)
+rotation = -1.5708
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("10_6j5jq")
+hframes = 7
+vframes = 4
+frame = 8
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(22, 77)
+texture = ExtResource("11_3etjg")
+hframes = 4
+vframes = 3
+frame = 3
+
+[node name="Kenny_link" type="TextureButton" parent="."]
+offset_left = 198.0
+offset_top = 197.0
+offset_right = 214.0
+offset_bottom = 213.0
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("12_a73ng")
+texture_pressed = ExtResource("13_go17s")
+texture_hover = ExtResource("14_pv0en")
+
+[node name="me_link" type="TextureButton" parent="."]
+offset_left = 210.0
+offset_top = 82.0
+offset_right = 226.0
+offset_bottom = 98.0
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("12_a73ng")
+texture_pressed = ExtResource("13_go17s")
+texture_hover = ExtResource("14_pv0en")
+
+[connection signal="pressed" from="menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="Kenny_link" to="." method="_on_kenny_link_pressed"]
+[connection signal="pressed" from="me_link" to="." method="_on_me_link_pressed"]

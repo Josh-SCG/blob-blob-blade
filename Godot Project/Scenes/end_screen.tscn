@@ -1,0 +1,308 @@
+[gd_scene load_steps=29 format=3 uid="uid://bevkgat808cn3"]
+
+[ext_resource type="Texture2D" uid="uid://nra2p7ynw8dc" path="res://Assets/Art/bricks.png" id="1_lj2qe"]
+[ext_resource type="Script" path="res://Scripts/end_screen.gd" id="1_m6ksg"]
+[ext_resource type="Texture2D" uid="uid://vr46yilgcau" path="res://Assets/Art/Road.png" id="2_cwoh6"]
+[ext_resource type="FontFile" uid="uid://bgjbj7oq2nv44" path="res://Assets/SCG_FONT.ttf" id="3_awvd2"]
+[ext_resource type="Texture2D" uid="uid://cr0iydjbgn7lt" path="res://Assets/Art/UI Buttons/cross_normal.png" id="4_qtx0o"]
+[ext_resource type="Texture2D" uid="uid://c3oii5mxhmg0h" path="res://Assets/Art/UI Buttons/cross_pressed.png" id="5_pgdlu"]
+[ext_resource type="Texture2D" uid="uid://gg0kmkyx12a3" path="res://Assets/Art/UI Buttons/cross_hover.png" id="6_74wvr"]
+[ext_resource type="Texture2D" uid="uid://bfa5bbpxq1kre" path="res://Assets/Art/Blob_Sprites.png" id="8_33yml"]
+[ext_resource type="Texture2D" uid="uid://bdg5gjjvreutl" path="res://Assets/Art/Attacks.png" id="9_ufsp6"]
+[ext_resource type="Texture2D" uid="uid://cw57qeja5lbci" path="res://Assets/Art/Sprite_Sprites.png" id="10_t6ia7"]
+[ext_resource type="Texture2D" uid="uid://0egcbm85cirq" path="res://Assets/Art/Arrows.png" id="11_681cf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4m5ig"]
+atlas = ExtResource("8_33yml")
+region = Rect2(0, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cd0u3"]
+atlas = ExtResource("8_33yml")
+region = Rect2(16, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jx2oe"]
+atlas = ExtResource("8_33yml")
+region = Rect2(32, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j852x"]
+atlas = ExtResource("8_33yml")
+region = Rect2(48, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wroow"]
+atlas = ExtResource("8_33yml")
+region = Rect2(64, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3nx0d"]
+atlas = ExtResource("8_33yml")
+region = Rect2(80, 64, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oi8e8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4m5ig")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cd0u3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jx2oe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j852x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wroow")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3nx0d")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v20k7"]
+atlas = ExtResource("10_t6ia7")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vercs"]
+atlas = ExtResource("10_t6ia7")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d57kg"]
+atlas = ExtResource("10_t6ia7")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eqsif"]
+atlas = ExtResource("10_t6ia7")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_usu8h"]
+atlas = ExtResource("10_t6ia7")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ui7h3"]
+atlas = ExtResource("10_t6ia7")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_swhn7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v20k7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vercs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d57kg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eqsif")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_usu8h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ui7h3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uojh5"]
+atlas = ExtResource("11_681cf")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mfxcm"]
+atlas = ExtResource("11_681cf")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l4v22"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uojh5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mfxcm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="End_Screen" type="Node2D"]
+script = ExtResource("1_m6ksg")
+
+[node name="Brick_wall" type="TextureRect" parent="."]
+offset_right = 240.0
+offset_bottom = 240.0
+texture = ExtResource("1_lj2qe")
+stretch_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="Brick_wall"]
+layout_mode = 0
+offset_right = 240.0
+offset_bottom = 240.0
+color = Color(0, 0, 0, 0.607843)
+
+[node name="Road" type="TextureRect" parent="."]
+offset_top = 60.0
+offset_right = 240.0
+offset_bottom = 76.0
+texture = ExtResource("2_cwoh6")
+stretch_mode = 1
+
+[node name="Road2" type="TextureRect" parent="."]
+offset_top = 180.0
+offset_right = 240.0
+offset_bottom = 196.0
+texture = ExtResource("2_cwoh6")
+stretch_mode = 1
+flip_h = true
+
+[node name="Top_Title" type="RichTextLabel" parent="."]
+offset_left = 40.0
+offset_top = 20.0
+offset_right = 3360.0
+offset_bottom = 860.0
+scale = Vector2(0.05, 0.05)
+theme_override_colors/default_color = Color(1, 0.682353, 0.788235, 1)
+theme_override_fonts/normal_font = ExtResource("3_awvd2")
+theme_override_font_sizes/normal_font_size = 256
+text = "You SHOULD NOT SEE THIS TEXT!?!?!"
+
+[node name="Menu" type="TextureButton" parent="."]
+offset_left = 7.0
+offset_top = 212.0
+offset_right = 23.0
+offset_bottom = 228.0
+texture_normal = ExtResource("4_qtx0o")
+texture_pressed = ExtResource("5_pgdlu")
+texture_hover = ExtResource("6_74wvr")
+
+[node name="Menu_text" type="RichTextLabel" parent="Menu"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 3.0
+offset_right = 1311.0
+offset_bottom = 203.0
+scale = Vector2(0.05, 0.05)
+theme_override_colors/default_color = Color(1, 0.682353, 0.788235, 1)
+theme_override_fonts/normal_font = ExtResource("3_awvd2")
+theme_override_font_sizes/normal_font_size = 128
+text = "Return to menu"
+
+[node name="Win_Screen" type="Node2D" parent="."]
+visible = false
+position = Vector2(120, 120)
+scale = Vector2(3, 3)
+
+[node name="blob" type="AnimatedSprite2D" parent="Win_Screen"]
+position = Vector2(-25, 12)
+sprite_frames = SubResource("SpriteFrames_oi8e8")
+autoplay = "default"
+frame_progress = 0.823484
+
+[node name="sword" type="Sprite2D" parent="Win_Screen"]
+position = Vector2(-2.5, 0)
+texture = ExtResource("9_ufsp6")
+hframes = 7
+vframes = 4
+frame = 8
+
+[node name="blob2" type="AnimatedSprite2D" parent="Win_Screen"]
+position = Vector2(25, 12)
+sprite_frames = SubResource("SpriteFrames_oi8e8")
+autoplay = "default"
+frame_progress = 0.421815
+flip_h = true
+
+[node name="sword2" type="Sprite2D" parent="Win_Screen"]
+position = Vector2(2.5, 0)
+texture = ExtResource("9_ufsp6")
+flip_h = true
+hframes = 7
+vframes = 4
+frame = 8
+
+[node name="Lose_Screen" type="Node2D" parent="."]
+visible = false
+
+[node name="sprite" type="AnimatedSprite2D" parent="Lose_Screen"]
+position = Vector2(40, 110)
+sprite_frames = SubResource("SpriteFrames_swhn7")
+autoplay = "default"
+frame_progress = 0.306118
+
+[node name="sprite2" type="AnimatedSprite2D" parent="Lose_Screen"]
+position = Vector2(200, 110)
+sprite_frames = SubResource("SpriteFrames_swhn7")
+autoplay = "default"
+frame_progress = 0.546942
+flip_h = true
+
+[node name="bullet" type="AnimatedSprite2D" parent="Lose_Screen"]
+position = Vector2(83, 132)
+rotation = 0.523599
+sprite_frames = SubResource("SpriteFrames_l4v22")
+autoplay = "default"
+frame_progress = 0.0621801
+
+[node name="bullet2" type="AnimatedSprite2D" parent="Lose_Screen"]
+position = Vector2(148, 169)
+rotation = 0.523599
+sprite_frames = SubResource("SpriteFrames_l4v22")
+autoplay = "default"
+frame_progress = 0.654347
+
+[node name="bullet3" type="AnimatedSprite2D" parent="Lose_Screen"]
+position = Vector2(127, 155)
+rotation = 0.523599
+sprite_frames = SubResource("SpriteFrames_l4v22")
+autoplay = "default"
+frame_progress = 0.0499963
+
+[node name="bullet4" type="AnimatedSprite2D" parent="Lose_Screen"]
+position = Vector2(105, 143)
+rotation = 0.523599
+sprite_frames = SubResource("SpriteFrames_l4v22")
+autoplay = "default"
+frame_progress = 0.439033
+
+[node name="bullet5" type="AnimatedSprite2D" parent="Lose_Screen"]
+position = Vector2(162, 131)
+rotation = -0.523599
+sprite_frames = SubResource("SpriteFrames_l4v22")
+autoplay = "default"
+frame_progress = 0.967815
+flip_h = true
+
+[node name="bullet6" type="AnimatedSprite2D" parent="Lose_Screen"]
+position = Vector2(82, 172)
+rotation = -0.523599
+sprite_frames = SubResource("SpriteFrames_l4v22")
+autoplay = "default"
+frame_progress = 0.343103
+flip_h = true
+
+[node name="bullet7" type="AnimatedSprite2D" parent="Lose_Screen"]
+position = Vector2(102, 162)
+rotation = -0.523599
+sprite_frames = SubResource("SpriteFrames_l4v22")
+autoplay = "default"
+frame_progress = 0.117648
+flip_h = true
+
+[node name="bullet8" type="AnimatedSprite2D" parent="Lose_Screen"]
+position = Vector2(141, 138)
+rotation = -0.523599
+sprite_frames = SubResource("SpriteFrames_l4v22")
+autoplay = "default"
+frame_progress = 0.98766
+flip_h = true
+
+[connection signal="pressed" from="Menu" to="." method="_on_menu_pressed"]

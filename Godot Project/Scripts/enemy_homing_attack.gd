@@ -41,10 +41,15 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		body.damaged()
 		queue_free()
 	elif body.is_in_group("Player_weapon") and target_name == "Player":
+		Sfx.play_deflect()
+		GameTrackingGlobal.achieve_deflect_counter += 1
+		if GameTrackingGlobal.achieve_deflect_counter >= 40:
+			GameTrackingGlobal.achieve_deflect= 1
 		body.get_parent().sword_reset()
 		target = target2
 		target_name = "Enemy"
 		acceleration = Vector2.ZERO
 		velocity = Vector2.ZERO
 	elif body.is_in_group("Player_shield"):
+		Sfx.play_block()
 		queue_free()

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bb24c7qjrowrt"]
+
+[ext_resource type="Script" path="res://key_art.gd" id="1_0qtxw"]
+
+[node name="Screenshot" type="Camera2D"]
+position = Vector2(120, 120)
+script = ExtResource("1_0qtxw")

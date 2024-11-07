@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://k1m3iu2vhyb"]
+
+[ext_resource type="Script" path="res://Scripts/corner_attack_item.gd" id="1_6wxuh"]
+[ext_resource type="Texture2D" uid="uid://bdpht5cynb0y6" path="res://Assets/Art/Misc.png" id="2_b00m1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1korr"]
+radius = 15.0
+
+[node name="Corner Attack" type="Area2D"]
+script = ExtResource("1_6wxuh")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_b00m1")
+hframes = 6
+vframes = 2
+frame = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1korr")
+
+[node name="damage" type="Timer" parent="."]
+wait_time = 0.8
+
+[node name="speed" type="Timer" parent="."]
+wait_time = 2.5
+autostart = true
+
+[node name="collapse" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="damage" to="." method="_on_damage_timeout"]
+[connection signal="timeout" from="speed" to="." method="_on_speed_timeout"]
+[connection signal="timeout" from="collapse" to="." method="_on_collapse_timeout"]

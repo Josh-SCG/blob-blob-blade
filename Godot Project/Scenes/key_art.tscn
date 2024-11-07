@@ -1,40 +1,52 @@
-[gd_scene load_steps=5 format=3 uid="uid://dkuha2niytc7v"]
+[gd_scene load_steps=10 format=3 uid="uid://dkuha2niytc7v"]
 
+[ext_resource type="Texture2D" uid="uid://nra2p7ynw8dc" path="res://Assets/Art/bricks.png" id="1_f0rk5"]
 [ext_resource type="Texture2D" uid="uid://bfmyuhppk102w" path="res://Assets/Art/Titles.png" id="1_qjgoy"]
 [ext_resource type="Texture2D" uid="uid://bdg5gjjvreutl" path="res://Assets/Art/Attacks.png" id="2_kytjf"]
 [ext_resource type="Texture2D" uid="uid://cigiw5kjgttho" path="res://Assets/Art/Environment.png" id="3_ctncv"]
 [ext_resource type="Texture2D" uid="uid://vr46yilgcau" path="res://Assets/Art/Road.png" id="3_tksok"]
+[ext_resource type="Texture2D" uid="uid://cw57qeja5lbci" path="res://Assets/Art/Sprite_Sprites.png" id="6_13nkk"]
+[ext_resource type="Texture2D" uid="uid://bfa5bbpxq1kre" path="res://Assets/Art/Blob_Sprites.png" id="7_a4cxy"]
+[ext_resource type="Texture2D" uid="uid://0egcbm85cirq" path="res://Assets/Art/Arrows.png" id="8_qi0bs"]
+[ext_resource type="PackedScene" uid="uid://bb24c7qjrowrt" path="res://screenshot.tscn" id="9_7obnm"]
 
 [node name="KeyArt" type="Node2D"]
-scale = Vector2(0.75, 0.75)
+scale = Vector2(2, 2)
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Scene" type="Node2D" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="Scene"]
+offset_right = 320.0
+offset_bottom = 320.0
+texture = ExtResource("1_f0rk5")
+stretch_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="Scene"]
 offset_left = -16.0
 offset_top = -16.0
 offset_right = 336.0
 offset_bottom = 336.0
 color = Color(0, 0, 0, 0.823529)
 
-[node name="Title" type="Sprite2D" parent="."]
-position = Vector2(160, 80)
+[node name="Title" type="Sprite2D" parent="Scene"]
+position = Vector2(159, 100)
 scale = Vector2(2, 2)
 texture = ExtResource("1_qjgoy")
 vframes = 4
 metadata/_edit_group_ = true
 
-[node name="Sub-title" type="Sprite2D" parent="Title"]
+[node name="Sub-title" type="Sprite2D" parent="Scene/Title"]
 position = Vector2(1, 19)
 texture = ExtResource("1_qjgoy")
 hframes = 2
 vframes = 4
 frame = 4
 
-[node name="SWSH" type="Node2D" parent="."]
-position = Vector2(160, 220)
-scale = Vector2(1.333, 1.333)
+[node name="SWSH" type="Node2D" parent="Scene"]
+position = Vector2(160, 60)
 metadata/_edit_group_ = true
 
-[node name="Sword" type="Sprite2D" parent="SWSH"]
+[node name="Sword" type="Sprite2D" parent="Scene/SWSH"]
 position = Vector2(-8.49998, -8.99998)
 rotation = 1.5708
 scale = Vector2(2, 2)
@@ -43,7 +55,7 @@ hframes = 7
 vframes = 4
 frame = 8
 
-[node name="Sword2" type="Sprite2D" parent="SWSH"]
+[node name="Sword2" type="Sprite2D" parent="Scene/SWSH"]
 position = Vector2(7.50002, 7.00002)
 rotation = 1.5708
 scale = Vector2(2, 2)
@@ -52,7 +64,7 @@ hframes = 7
 vframes = 4
 frame = 8
 
-[node name="Sword3" type="Sprite2D" parent="SWSH"]
+[node name="Sword3" type="Sprite2D" parent="Scene/SWSH"]
 position = Vector2(7.50002, -7.99998)
 rotation = -3.14159
 scale = Vector2(2, 2)
@@ -61,7 +73,7 @@ hframes = 7
 vframes = 4
 frame = 8
 
-[node name="Sword4" type="Sprite2D" parent="SWSH"]
+[node name="Sword4" type="Sprite2D" parent="Scene/SWSH"]
 position = Vector2(-7.49998, 6.00002)
 rotation = -3.14159
 scale = Vector2(2, 2)
@@ -70,7 +82,7 @@ hframes = 7
 vframes = 4
 frame = 8
 
-[node name="Shield" type="Sprite2D" parent="SWSH"]
+[node name="Shield" type="Sprite2D" parent="Scene/SWSH"]
 position = Vector2(-0.5, 2)
 scale = Vector2(2, 2)
 texture = ExtResource("2_kytjf")
@@ -78,7 +90,7 @@ hframes = 7
 vframes = 4
 frame = 15
 
-[node name="Road" type="TextureRect" parent="."]
+[node name="Road" type="TextureRect" parent="Scene"]
 offset_left = 25.0
 offset_top = 8.0
 offset_right = 295.0
@@ -86,58 +98,197 @@ offset_bottom = 24.0
 texture = ExtResource("3_tksok")
 stretch_mode = 1
 
-[node name="Road2" type="TextureRect" parent="."]
-offset_left = 2.0
-offset_top = 296.0
-offset_right = 319.0
-offset_bottom = 312.0
+[node name="Road2" type="TextureRect" parent="Scene"]
+offset_left = 1.0
+offset_top = 227.0
+offset_right = 312.0
+offset_bottom = 243.0
 texture = ExtResource("3_tksok")
 stretch_mode = 1
 flip_h = true
 
-[node name="Road3" type="TextureRect" parent="."]
+[node name="Road3" type="TextureRect" parent="Scene"]
 offset_left = 24.0
 offset_top = 1.0
-offset_right = 342.0
+offset_right = 271.0
 offset_bottom = 17.0
 rotation = 1.5708
 texture = ExtResource("3_tksok")
 stretch_mode = 1
 flip_h = true
 
-[node name="Road4" type="TextureRect" parent="."]
-offset_left = 312.0
-offset_top = 1.0
-offset_right = 630.0
-offset_bottom = 17.0
+[node name="Road4" type="TextureRect" parent="Scene"]
+offset_left = 307.0
+offset_top = 2.0
+offset_right = 553.0
+offset_bottom = 18.0
 rotation = 1.5708
 texture = ExtResource("3_tksok")
 stretch_mode = 1
 
-[node name="Circle" type="Sprite2D" parent="."]
+[node name="Circle" type="Sprite2D" parent="Scene"]
 position = Vector2(16, 16)
 texture = ExtResource("3_ctncv")
 hframes = 4
 vframes = 3
 frame = 3
 
-[node name="Circle2" type="Sprite2D" parent="."]
-position = Vector2(304, 16)
+[node name="Circle2" type="Sprite2D" parent="Scene"]
+position = Vector2(299, 16)
 texture = ExtResource("3_ctncv")
 hframes = 4
 vframes = 3
 frame = 3
 
-[node name="Circle3" type="Sprite2D" parent="."]
-position = Vector2(304, 304)
+[node name="Circle3" type="Sprite2D" parent="Scene"]
+position = Vector2(299, 234)
 texture = ExtResource("3_ctncv")
 hframes = 4
 vframes = 3
 frame = 3
 
-[node name="Circle4" type="Sprite2D" parent="."]
-position = Vector2(16, 304)
+[node name="Circle4" type="Sprite2D" parent="Scene"]
+position = Vector2(16, 234)
 texture = ExtResource("3_ctncv")
 hframes = 4
 vframes = 3
 frame = 3
+
+[node name="blob" type="Sprite2D" parent="Scene"]
+position = Vector2(16, 233)
+texture = ExtResource("7_a4cxy")
+hframes = 8
+vframes = 10
+frame = 41
+
+[node name="blob4" type="Sprite2D" parent="Scene"]
+position = Vector2(16, 16)
+texture = ExtResource("7_a4cxy")
+hframes = 8
+vframes = 10
+frame = 41
+
+[node name="blob2" type="Sprite2D" parent="Scene"]
+position = Vector2(298, 233)
+texture = ExtResource("7_a4cxy")
+flip_h = true
+hframes = 8
+vframes = 10
+frame = 41
+
+[node name="blob3" type="Sprite2D" parent="Scene"]
+position = Vector2(299, 15)
+texture = ExtResource("7_a4cxy")
+flip_h = true
+hframes = 8
+vframes = 10
+frame = 41
+
+[node name="Node2D3" type="Node2D" parent="Scene"]
+position = Vector2(161, 153)
+
+[node name="sprite" type="Sprite2D" parent="Scene/Node2D3"]
+position = Vector2(-1, 36)
+texture = ExtResource("6_13nkk")
+hframes = 6
+vframes = 2
+frame = 2
+
+[node name="Node2D" type="Node2D" parent="Scene/Node2D3"]
+position = Vector2(77, 42)
+rotation = 0.349066
+metadata/_edit_group_ = true
+
+[node name="bullet" type="Sprite2D" parent="Scene/Node2D3/Node2D"]
+position = Vector2(34.6667, 1.33333)
+texture = ExtResource("8_qi0bs")
+hframes = 2
+
+[node name="bulletB" type="Sprite2D" parent="Scene/Node2D3/Node2D"]
+position = Vector2(12, 2.66666)
+texture = ExtResource("2_kytjf")
+hframes = 7
+vframes = 4
+frame = 1
+
+[node name="bulletB2" type="Sprite2D" parent="Scene/Node2D3/Node2D"]
+position = Vector2(5.33333, -9.33334)
+texture = ExtResource("2_kytjf")
+hframes = 7
+vframes = 4
+frame = 1
+
+[node name="bulletB3" type="Sprite2D" parent="Scene/Node2D3/Node2D"]
+position = Vector2(-17.3333, 9.33331)
+texture = ExtResource("2_kytjf")
+hframes = 7
+vframes = 4
+frame = 1
+
+[node name="bulletB4" type="Sprite2D" parent="Scene/Node2D3/Node2D"]
+position = Vector2(-25.3333, -2.66667)
+texture = ExtResource("2_kytjf")
+hframes = 7
+vframes = 4
+frame = 1
+
+[node name="bulletB5" type="Sprite2D" parent="Scene/Node2D3/Node2D"]
+position = Vector2(1.33333, 13.3333)
+texture = ExtResource("2_kytjf")
+hframes = 7
+vframes = 4
+frame = 1
+
+[node name="Node2D2" type="Node2D" parent="Scene/Node2D3"]
+position = Vector2(-75, 47)
+rotation = 2.79253
+metadata/_edit_group_ = true
+
+[node name="bullet" type="Sprite2D" parent="Scene/Node2D3/Node2D2"]
+position = Vector2(34.6667, 1.33333)
+texture = ExtResource("8_qi0bs")
+flip_v = true
+hframes = 2
+
+[node name="bulletB" type="Sprite2D" parent="Scene/Node2D3/Node2D2"]
+position = Vector2(12, 2.66666)
+texture = ExtResource("2_kytjf")
+flip_v = true
+hframes = 7
+vframes = 4
+frame = 1
+
+[node name="bulletB2" type="Sprite2D" parent="Scene/Node2D3/Node2D2"]
+position = Vector2(5.33333, -9.33334)
+texture = ExtResource("2_kytjf")
+flip_v = true
+hframes = 7
+vframes = 4
+frame = 1
+
+[node name="bulletB3" type="Sprite2D" parent="Scene/Node2D3/Node2D2"]
+position = Vector2(-17.3333, 9.33331)
+texture = ExtResource("2_kytjf")
+flip_v = true
+hframes = 7
+vframes = 4
+frame = 1
+
+[node name="bulletB4" type="Sprite2D" parent="Scene/Node2D3/Node2D2"]
+position = Vector2(-25.3333, -2.66667)
+texture = ExtResource("2_kytjf")
+flip_v = true
+hframes = 7
+vframes = 4
+frame = 1
+
+[node name="bulletB5" type="Sprite2D" parent="Scene/Node2D3/Node2D2"]
+position = Vector2(1.33333, 13.3333)
+texture = ExtResource("2_kytjf")
+flip_v = true
+hframes = 7
+vframes = 4
+frame = 1
+
+[node name="Screenshot" parent="." instance=ExtResource("9_7obnm")]
+position = Vector2(157.5, 125)

@@ -8,10 +8,12 @@ extends CharacterBody2D
 @export var move_speed = 10
 
 @onready var sprite = $Sprite
-@onready var health : int = 100
+@onready var health : float = 100
 @onready var animations = $Sprite
 @onready var state_machine = $"State Machine"
 
+#Currently set as TL, TR, BL BR
+@export var corner_points : Array[Marker2D] = []
 
 var move_to = 0
 
@@ -21,8 +23,6 @@ func _ready() -> void:
 	self.add_to_group("Enemy")
 	if player.global_position.x < 120:
 		sprite.flip_h = true
-	
-
 
 func _physics_process(delta: float) -> void:
 	state_machine.process_physics(delta)
@@ -45,9 +45,20 @@ func _process(delta: float) -> void:
 		sprite.flip_h = true
 	elif player.global_position.x > 120:
 		sprite.flip_h = false
-		
-	if Input.is_action_just_pressed("down"):
-		health -= 5
 
 func damaged() ->void:
-	health -= 5
+	health -= 2.5
+	if health <= 0:
+		$death.start()
+		$Sprite.animation = "death"
+
+
+func _on_death_timeout() -> void:
+	if player.health == 5:
+		GameTrackingGlobal.achieve_health = 1
+	if GameTrackingGlobal.achieve_root_check:
+		GameTrackingGlobal.achieve_root = 1
+	GameTrackingGlobal.achieve_root_check = true
+	GameTrackingGlobal.fight_outcome = "Win"
+	GameTrackingGlobal.achieve_win = 1
+	get_tree().change_scene_to_file("res://Scenes/end_screen.tscn")

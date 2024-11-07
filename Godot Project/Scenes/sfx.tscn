@@ -1,0 +1,14 @@
+[gd_scene load_steps=5 format=3 uid="uid://5lsdq6oumbub"]
+
+[ext_resource type="Script" path="res://Scripts/sfx.gd" id="1_tdyjk"]
+[ext_resource type="AudioStream" uid="uid://dhpvqot6n18c3" path="res://Assets/Audio/hurt.ogg" id="2_ba8xg"]
+[ext_resource type="AudioStream" uid="uid://bgqv24ils1v3x" path="res://Assets/Audio/block.ogg" id="3_cjhsn"]
+[ext_resource type="AudioStream" uid="uid://b0oep23o1yeay" path="res://Assets/Audio/deflect.ogg" id="4_hunn5"]
+
+[node name="sfx" type="AudioStreamPlayer"]
+autoplay = true
+bus = &"sfx"
+script = ExtResource("1_tdyjk")
+hurt = ExtResource("2_ba8xg")
+block = ExtResource("3_cjhsn")
+deflect = ExtResource("4_hunn5")

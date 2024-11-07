@@ -15,3 +15,5 @@ func updateUI(num: int) -> void:
 		heart3.frame = 15
 	elif num == 1:
 		heart2.frame = 15
+	elif num == 0:
+		heart1.frame = 15

@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://bdg5gjjvreutl" path="res://Assets/Art/Attacks.png" id="2_l4wir"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fro3w"]
-radius = 1.99999
-height = 12.0
+radius = 3.0
+height = 18.0
 
 [node name="Ability_Sword" type="Node2D"]
 script = ExtResource("1_l0fmw")
@@ -21,6 +21,6 @@ vframes = 4
 frame = 8
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Sword"]
-position = Vector2(27, 2.95586e-12)
+position = Vector2(26, -2.95586e-12)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_fro3w")

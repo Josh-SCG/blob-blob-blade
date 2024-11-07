@@ -7,6 +7,8 @@ extends CharacterBody2D
 @export var sword : PackedScene = preload("res://Scenes/ability_sword.tscn")
 @export var healthUI : Node2D
 
+@export var pause : PackedScene
+
 @onready var animations = $Sprite/AnimationPlayer
 
 #Positions as follows:
@@ -15,8 +17,9 @@ extends CharacterBody2D
 var current_position = 0
 var move_to
 var move_speed = 175
+var alive = true
 var is_moving = false
-
+var is_blinking = false
 var can_shield = true
 var can_sword = true
 var up_down_locked = false
@@ -32,8 +35,12 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	
-	if Input.is_action_just_pressed("shield") and can_shield:
+	if Input.is_action_just_pressed("pause"):
+		var popUp = pause.instantiate()
+		add_child(popUp)
+		get_tree().paused = true
+		
+	if Input.is_action_just_pressed("shield") and can_shield and alive:
 		can_sword = false
 		var shield_active = shield.instantiate()
 		shield_active.setRotation(Vector2(get_local_mouse_position().x, get_local_mouse_position().y).angle())
@@ -42,7 +49,7 @@ func _process(delta):
 	if Input.is_action_just_released("shield"):
 		can_sword = true
 		
-	if Input.is_action_just_pressed("sword") and can_sword:
+	if Input.is_action_just_pressed("sword") and can_sword and alive:
 		can_shield = false
 		var sword_active = sword.instantiate()
 		sword_active.setRotation(Vector2(get_local_mouse_position().x, get_local_mouse_position().y).angle())
@@ -57,12 +64,15 @@ func _process(delta):
 		#var shield_active = shield.instantiate()
 		#add_child(shield_active)
 	
-	if is_moving:
+	if is_moving and alive:
 		animations.play("run")
-	elif !is_moving:
+	elif !is_moving and alive:
 		animations.play("idle")
-	movement_input()
-	global_position = global_position.move_toward(points[move_to].global_position, delta*move_speed)
+	
+	if alive:
+		movement_input()
+		global_position = global_position.move_toward(points[move_to].global_position, delta*move_speed)
+	else: global_position = global_position
 	
 	if global_position == points[0].global_position or global_position == points[1].global_position or global_position == points[2].global_position or global_position == points[3].global_position:
 		current_position = move_to
@@ -78,9 +88,18 @@ func _process(delta):
 func damaged() ->void:
 	health -= 1
 	healthUI.updateUI(health)
-	
+	Sfx.play_hurt()
 	if health == 0:
-		pass #change scene to "You Died"
+		$death.start()
+		alive = false
+		animations.play("death")
+		
+	if alive:
+		is_blinking = true
+		$Blink_All.start()
+		$In_Out_Blink.start()
+	
+	
 
 func movement_input():
 	if Input.is_action_pressed("down"):
@@ -153,3 +172,21 @@ func movement_input():
 
 #func _on_shield_timer_timeout():
 	#can_shield = true
+
+
+func _on_blink_all_timeout() -> void:
+	is_blinking = false
+	$Sprite.visible = true
+	$In_Out_Blink.stop()
+
+
+func _on_in_out_blink_timeout() -> void:
+	if is_blinking:
+		if $Sprite.visible: $Sprite.visible = false
+		else: $Sprite.visible = true
+	else: $In_Out_Blink.stop()
+
+
+func _on_death_timeout() -> void:
+	GameTrackingGlobal.fight_outcome = "Defeat"
+	get_tree().change_scene_to_file("res://Scenes/end_screen.tscn")

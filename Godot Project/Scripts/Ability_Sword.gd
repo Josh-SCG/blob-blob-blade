@@ -1,8 +1,9 @@
 extends Node2D
 
-
+var hit_count
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	hit_count = 0
 	$Sword.add_to_group("Player_weapon")
 
 
@@ -18,5 +19,9 @@ func setRotation(rot):
 
 func sword_reset():
 	var player = get_parent()
-	player.can_shield = true
-	queue_free()
+	if hit_count >= 2 :
+		player.can_shield = true
+		queue_free()
+		hit_count = 0
+	else:
+		hit_count += 1
